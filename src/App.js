@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.scss";
 import Button from "./components/Button/Button";
 import Gentleman from "./components/Gentleman/Gentleman";
@@ -24,21 +24,15 @@ function App() {
       (gentleman) => gentleman.id === id
     );
     foundGentleman.selected = !foundGentleman.selected;
-
     setGentlemen(newGentlemen);
   };
 
-  const deleteGentleman = (id) => {
-    const newGentlemen = [...gentlemen];
-    const foundGentleman = newGentlemen.find(
-      (gentleman) => gentleman.id === id
-    );
-    const foundGentlemanIndex = newGentlemen.indexOf(foundGentleman, 0);
-    newGentlemen.splice(foundGentlemanIndex, 1);
-    console.log(newGentlemen);
-    setGentlemen(newGentlemen);
+  const deleteGentleman = async (id) => {
+    setTimeout(() => {
+      const newGentlemen = gentlemen.filter((gentleman) => gentleman.id !== id);
+      setGentlemen(newGentlemen);
+    }, 10);
   };
-  console.log(gentlemen);
 
   return (
     <div className="container">
