@@ -4,6 +4,7 @@ import "./Gentleman.scss";
 const Gentleman = ({
   manInfo: { name, profession, status, twitter, picture, selected },
   actionOnClick,
+  deleteAction,
 }) => {
   const initial = getInitialFromName(name);
 
@@ -39,7 +40,10 @@ const Gentleman = ({
         </ul>
       </div>
       <i className="icon gentleman__icon fas fa-check"></i>
-      <i className="icon gentleman__icon gentleman__icon--delete fas fa-times"></i>
+      <i
+        className="icon gentleman__icon gentleman__icon--delete fas fa-times"
+        onClick={deleteAction}
+      ></i>
     </li>
   );
 };

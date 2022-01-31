@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.scss";
 import Button from "./components/Button/Button";
 import Gentleman from "./components/Gentleman/Gentleman";
@@ -24,8 +24,14 @@ function App() {
       (gentleman) => gentleman.id === id
     );
     foundGentleman.selected = !foundGentleman.selected;
-
     setGentlemen(newGentlemen);
+  };
+
+  const deleteGentleman = async (id) => {
+    setTimeout(() => {
+      const newGentlemen = gentlemen.filter((gentleman) => gentleman.id !== id);
+      setGentlemen(newGentlemen);
+    }, 10);
   };
 
   return (
@@ -50,6 +56,9 @@ function App() {
                 manInfo={gentleman}
                 actionOnClick={() => {
                   toggleGentleman(gentleman.id);
+                }}
+                deleteAction={() => {
+                  deleteGentleman(gentleman.id);
                 }}
               />
             );
