@@ -1,4 +1,5 @@
 import getInitialFromName from "../../getInitialFromName";
+import "./Gentleman.scss";
 
 const Gentleman = ({
   manInfo: { name, profession, status, twitter, picture, selected },
