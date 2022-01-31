@@ -13,7 +13,9 @@ function App() {
   ).length;
 
   const selectAll = () => {
-    console.log("Select all");
+    setGentlemen(
+      gentlemen.map((gentleman) => ({ ...gentleman, selected: true }))
+    );
   };
 
   const toggleGentleman = (id) => {
