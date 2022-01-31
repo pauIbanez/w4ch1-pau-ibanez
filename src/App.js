@@ -1,6 +1,7 @@
 import "./App.scss";
 import Button from "./components/Button/Button";
 import Gentleman from "./components/Gentleman/Gentleman";
+import Info from "./components/Info/Info";
 import gentlemen from "./data/gentlemen";
 
 function App() {
@@ -12,13 +13,15 @@ function App() {
     console.log("Select gentleman");
   };
 
+  const nOfSelectedGentlemen = 0;
+
   return (
     <div className="container">
       <header className="main-header">
         <h1 className="main-title">The pointing gentlemen</h1>
       </header>
       <section className="controls">
-        <p className="info">0 gentlemen pointing at you</p>
+        <Info infoClass="info" number={nOfSelectedGentlemen} />
         <Button
           buttonClass="button button--select"
           buttonText="Select All"
