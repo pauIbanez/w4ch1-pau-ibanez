@@ -1,4 +1,6 @@
 import "./App.scss";
+import Gentleman from "./components/Gentleman/Gentleman";
+import gentlemen from "./data/gentlemen";
 
 function App() {
   return (
@@ -11,7 +13,11 @@ function App() {
         <button class="button button--select">Select all</button>
       </section>
       <main class="main">
-        <ul class="gentlemen"></ul>
+        <ul class="gentlemen">
+          {gentlemen.map((gentleman) => {
+            return <Gentleman manInfo={gentleman} />;
+          })}
+        </ul>
       </main>
     </div>
   );
