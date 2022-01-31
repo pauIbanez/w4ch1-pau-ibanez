@@ -1,12 +1,12 @@
 const Gentleman = ({
-  manInfo: { name, profession, status, twitter, image, initial, onClick },
+  manInfo: { name, profession, status, twitter, picture, initial, onClick },
 }) => {
   return (
     <li className="gentleman" onClick={onClick}>
       <div className="gentleman__avatar-container">
         <img
           className="gentleman__avatar"
-          src={image}
+          src={`img/${picture}`}
           alt="The Fary pointing at you"
         />
         <span className="gentleman__initial">{initial}</span>
