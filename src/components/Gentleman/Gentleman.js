@@ -1,13 +1,19 @@
 import getInitialFromName from "../../getInitialFromName";
 
 const Gentleman = ({
-  manInfo: { name, profession, status, twitter, picture },
+  manInfo: { name, profession, status, twitter, picture, selected },
   actionOnClick,
 }) => {
   const initial = getInitialFromName(name);
 
+  let gentlemanClass = "gentleman";
+
+  if (selected) {
+    gentlemanClass += " selected";
+  }
+
   return (
-    <li className="gentleman" onClick={actionOnClick}>
+    <li className={gentlemanClass} onClick={actionOnClick}>
       <div className="gentleman__avatar-container">
         <img
           className="gentleman__avatar"
