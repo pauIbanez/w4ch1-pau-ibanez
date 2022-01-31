@@ -1,19 +1,38 @@
+import { useState } from "react";
 import "./App.scss";
 import Button from "./components/Button/Button";
 import Gentleman from "./components/Gentleman/Gentleman";
 import Info from "./components/Info/Info";
-import gentlemen from "./data/gentlemen";
+import gentlemenData from "./data/gentlemen";
 
 function App() {
+  const [gentlemen, setGentlemen] = useState(gentlemenData);
+
+  const startingSelectedGentlemen = gentlemen.filter(
+    (gentleman) => gentleman.selected
+  ).length;
+
+  const [nOfSelectedGentlemen, setNOfSelectedGentlemen] = useState(
+    startingSelectedGentlemen
+  );
+
   const selectAll = () => {
     console.log("Select all");
   };
 
-  const selectGentleman = () => {
-    console.log("Select gentleman");
+  const toggleGentleman = (id) => {
+    const newGentlemen = [...gentlemen];
+    const foundGentleman = newGentlemen.find(
+      (gentleman) => gentleman.id === id
+    );
+    foundGentleman.selected = !foundGentleman.selected;
+    if (foundGentleman.selected) {
+      setNOfSelectedGentlemen(nOfSelectedGentlemen + 1);
+    } else {
+      setNOfSelectedGentlemen(nOfSelectedGentlemen - 1);
+    }
+    setGentlemen(newGentlemen);
   };
-
-  const nOfSelectedGentlemen = 0;
 
   return (
     <div className="container">
@@ -35,7 +54,9 @@ function App() {
               <Gentleman
                 key={gentleman.id}
                 manInfo={gentleman}
-                actionOnClick={selectGentleman}
+                actionOnClick={() => {
+                  toggleGentleman(gentleman.id);
+                }}
               />
             );
           })}
