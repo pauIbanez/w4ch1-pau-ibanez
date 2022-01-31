@@ -8,13 +8,9 @@ import gentlemenData from "./data/gentlemen";
 function App() {
   const [gentlemen, setGentlemen] = useState(gentlemenData);
 
-  const startingSelectedGentlemen = gentlemen.filter(
+  const nOfSelectedGentlemen = gentlemen.filter(
     (gentleman) => gentleman.selected
   ).length;
-
-  const [nOfSelectedGentlemen, setNOfSelectedGentlemen] = useState(
-    startingSelectedGentlemen
-  );
 
   const selectAll = () => {
     console.log("Select all");
@@ -26,11 +22,7 @@ function App() {
       (gentleman) => gentleman.id === id
     );
     foundGentleman.selected = !foundGentleman.selected;
-    if (foundGentleman.selected) {
-      setNOfSelectedGentlemen(nOfSelectedGentlemen + 1);
-    } else {
-      setNOfSelectedGentlemen(nOfSelectedGentlemen - 1);
-    }
+
     setGentlemen(newGentlemen);
   };
 
