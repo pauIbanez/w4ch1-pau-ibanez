@@ -28,6 +28,18 @@ function App() {
     setGentlemen(newGentlemen);
   };
 
+  const deleteGentleman = (id) => {
+    const newGentlemen = [...gentlemen];
+    const foundGentleman = newGentlemen.find(
+      (gentleman) => gentleman.id === id
+    );
+    const foundGentlemanIndex = newGentlemen.indexOf(foundGentleman, 0);
+    newGentlemen.splice(foundGentlemanIndex, 1);
+    console.log(newGentlemen);
+    setGentlemen(newGentlemen);
+  };
+  console.log(gentlemen);
+
   return (
     <div className="container">
       <header className="main-header">
@@ -50,6 +62,9 @@ function App() {
                 manInfo={gentleman}
                 actionOnClick={() => {
                   toggleGentleman(gentleman.id);
+                }}
+                deleteAction={() => {
+                  deleteGentleman(gentleman.id);
                 }}
               />
             );
